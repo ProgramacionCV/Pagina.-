@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TuringPoint | Pioneros de la Informática y Revolución de las Computadoras</title>
+  <meta name="description" content="Tributo interactivo a los visionarios de la programación, el software y los arquitectos del hardware que revolucionaron las computadoras.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#0b0f19] text-slate-100 min-h-screen relative selection:bg-indigo-500 selection:text-white">
+
+  <!-- Ambient Background Lighting -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="absolute -top-40 -left-40 w-96 h-96 ambient-glow-1 rounded-full blur-3xl opacity-50 animate-pulse-glow"></div>
+    <div class="absolute top-1/3 -right-40 w-96 h-96 ambient-glow-2 rounded-full blur-3xl opacity-40 animate-pulse-glow" style="animation-delay: 2s;"></div>
+    <div class="absolute -bottom-40 left-1/3 w-[500px] h-[500px] ambient-glow-1 rounded-full blur-3xl opacity-30 animate-pulse-glow" style="animation-delay: 4s;"></div>
+    <div class="absolute inset-0 bg-grid-pattern opacity-40"></div>
+  </div>
+
+  <div class="relative z-10 flex flex-col min-h-screen">
+    <!-- Top Dedication Banner (Al principio de la página) -->
+    <div class="w-full bg-gradient-to-r from-indigo-950 via-purple-950 to-slate-950 border-b border-indigo-500/30 py-2.5 px-4 text-center shadow-lg relative z-50">
+      <p class="text-xs sm:text-sm text-indigo-200 font-medium tracking-wide flex items-center justify-center gap-2">
+        <i data-lucide="sparkles" class="w-4 h-4 text-amber-400 shrink-0"></i>
+        <span class="italic font-serif">"Un hombre que quiere recordar las memorias y los grandes logros de aquellos pioneros en la informática"</span>
+      </p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-amber-500 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+            <i data-lucide="cpu" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <span class="font-extrabold text-base sm:text-lg tracking-tight bg-gradient-to-r from-white via-slate-200 to-indigo-300 bg-clip-text text-transparent">
+              TuringPoint
+            </span>
+            <span class="hidden sm:inline-block text-[11px] font-mono text-indigo-400 ml-2 px-2 py-0.5 rounded bg-indigo-950/60 border border-indigo-800/50">
+              Historia & Arquitectura
+            </span>
+          </div>
+        </a>
+
+        <!-- Nav Links -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a href="#explorar-software" class="text-xs sm:text-sm text-slate-300 hover:text-white px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-colors flex items-center gap-1.5">
+            <i data-lucide="code-2" class="w-4 h-4 text-indigo-400"></i>
+            <span class="hidden md:inline">Software & Código</span>
+          </a>
+          <a href="#explorar-hardware" class="text-xs sm:text-sm text-slate-300 hover:text-white px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-colors flex items-center gap-1.5">
+            <i data-lucide="microchip" class="w-4 h-4 text-amber-400"></i>
+            <span class="hidden md:inline">Computadoras</span>
+          </a>
+          <a href="#componentes-seccion" class="text-xs sm:text-sm text-slate-300 hover:text-white px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-colors flex items-center gap-1.5">
+            <i data-lucide="layers" class="w-4 h-4 text-emerald-400"></i>
+            <span class="hidden md:inline">RAM, Placas & GPUs</span>
+          </a>
+          <a href="#timeline-section" class="text-xs sm:text-sm text-slate-300 hover:text-white px-2.5 sm:px-3 py-1.5 rounded-lg hover:bg-slate-800/60 transition-colors flex items-center gap-1.5">
+            <i data-lucide="clock" class="w-4 h-4 text-purple-400"></i>
+            <span class="hidden sm:inline">Cronología</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto text-center">
+      <!-- Introductory Dedication Banner -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-gradient-to-r from-indigo-950/90 via-purple-950/80 to-slate-900 border border-indigo-500/40 text-indigo-200 text-xs sm:text-sm font-medium mb-6 backdrop-blur-md shadow-xl shadow-indigo-950/40">
+        <i data-lucide="sparkles" class="w-4 h-4 text-indigo-400"></i>
+        <span class="italic font-serif tracking-wide">"Un hombre que quiere recordar las memorias y los grandes logros de aquellos pioneros en la informática"</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight mb-6">
+        Las Mentes y Máquinas que <br class="hidden sm:inline" />
+        <span class="bg-gradient-to-r from-indigo-400 via-amber-300 to-pink-400 bg-clip-text text-transparent">
+          Revolucionaron la Computación
+        </span>
+      </h1>
+
+      <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed mb-8">
+        Explora a los visionarios de la programación y el software, a los audaces inventores de las computadoras físicas, y la asombrosa evolución técnica de la Memoria RAM, las Placas Madre y las Tarjetas Gráficas.
+      </p>
+
+      <!-- Quick Section Jump Tabs -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
+        <a href="#explorar-software" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-600/90 hover:bg-indigo-600 text-white shadow-lg shadow-indigo-600/20 border border-indigo-500 transition-all flex items-center gap-2">
+          <i data-lucide="terminal" class="w-4 h-4"></i>
+          <span>Pioneros del Software (12)</span>
+        </a>
+        <a href="#explorar-hardware" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-amber-600/90 hover:bg-amber-600 text-white shadow-lg shadow-amber-600/20 border border-amber-500 transition-all flex items-center gap-2">
+          <i data-lucide="cpu" class="w-4 h-4"></i>
+          <span>Creadores de Computadoras (10)</span>
+        </a>
+        <a href="#componentes-seccion" class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-emerald-600/90 hover:bg-emerald-600 text-white shadow-lg shadow-emerald-600/20 border border-emerald-500 transition-all flex items-center gap-2">
+          <i data-lucide="layers" class="w-4 h-4"></i>
+          <span>RAM, Placas & GPUs (3 Guías)</span>
+        </a>
+      </div>
+
+      <!-- Random Quote Banner -->
+      <div class="glass-panel rounded-2xl p-6 sm:p-7 max-w-3xl mx-auto text-left relative overflow-hidden border border-indigo-500/20 shadow-2xl shadow-indigo-950/40">
+        <div class="flex items-start justify-between gap-4">
+          <div class="flex items-center gap-3 text-indigo-400 text-xs font-mono uppercase tracking-wider font-semibold">
+            <i data-lucide="quote" class="w-4 h-4"></i>
+            <span>Pensamiento Destacado</span>
+          </div>
+          <button id="random-quote-btn" class="text-slate-400 hover:text-indigo-300 p-1 rounded-lg hover:bg-slate-800 transition-colors" title="Ver otra cita al azar">
+            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+          </button>
+        </div>
+        <p id="quote-display" class="text-base sm:text-lg text-slate-200 italic font-medium my-3 leading-relaxed">
+          "Cargando pensamiento..."
+        </p>
+        <p id="quote-author" class="text-xs sm:text-sm font-mono text-indigo-400 font-semibold">
+          — Pionero
+        </p>
+      </div>
+
+      <!-- Quick Metrics -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 max-w-4xl mx-auto">
+        <div class="glass-panel p-4 rounded-xl text-center">
+          <div id="total-count-software" class="text-2xl sm:text-3xl font-extrabold text-indigo-400 font-mono">12</div>
+          <div class="text-xs text-slate-400 mt-1">Pioneros del Software</div>
+        </div>
+        <div class="glass-panel p-4 rounded-xl text-center">
+          <div id="total-count-hardware" class="text-2xl sm:text-3xl font-extrabold text-amber-400 font-mono">10</div>
+          <div class="text-xs text-slate-400 mt-1">Creadores de Computadoras</div>
+        </div>
+        <div class="glass-panel p-4 rounded-xl text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono">3</div>
+          <div class="text-xs text-slate-400 mt-1">Componentes Clave</div>
+        </div>
+        <div class="glass-panel p-4 rounded-xl text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-pink-400 font-mono">100%</div>
+          <div class="text-xs text-slate-400 mt-1">Impacto Global Diario</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 1: Software & Programming Pioneers -->
+    <section id="explorar-software" class="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full">
+      
+      <!-- Section Header -->
+      <div class="border-b border-slate-800 pb-5 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-mono font-medium mb-2">
+            <i data-lucide="terminal" class="w-3.5 h-3.5"></i> Sección I: Software, Lenguajes y Algoritmos
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2.5">
+            Pioneros de la Informática y la Programación
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1">
+            Los creadores de los algoritmos, compiladores, sistemas operativos y la World Wide Web.
+          </p>
+        </div>
+
+        <!-- Search Bar Software -->
+        <div class="relative w-full md:w-80">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            id="search-input" 
+            placeholder="Buscar por software, autor, concepto..." 
+            class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-10 pr-9 py-2.5 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all"
+          />
+          <button id="clear-search-btn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white" title="Limpiar búsqueda">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Categories Pills Software -->
+      <div id="category-filters" class="flex flex-wrap items-center justify-between gap-3 mb-8">
+        <div class="flex flex-wrap gap-2">
+          <button data-category="all" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-indigo-600 text-white shadow-lg shadow-indigo-600/30 transition-all border border-indigo-500">
+            Todos los Campos
+          </button>
+          <button data-category="teoria" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800 transition-all">
+            Teoría & Algoritmos
+          </button>
+          <button data-category="lenguajes" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800 transition-all">
+            Lenguajes & Compiladores
+          </button>
+          <button data-category="sistemas" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800 transition-all">
+            Sistemas & Arquitectura
+          </button>
+          <button data-category="redes" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800 transition-all">
+            Redes & Web
+          </button>
+        </div>
+
+        <span class="text-xs text-slate-400 font-mono">
+          Mostrando <span id="results-count" class="text-indigo-400 font-bold">12 de 12</span> figuras
+        </span>
+      </div>
+
+      <!-- Software Pioneers Cards Grid -->
+      <div id="cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 2: Computers & Hardware Revolution -->
+    <section id="explorar-hardware" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-slate-800/80">
+      
+      <!-- Section Header -->
+      <div class="border-b border-slate-800 pb-5 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-mono font-medium mb-2">
+            <i data-lucide="cpu" class="w-3.5 h-3.5"></i> Sección II: Hardware, Máquinas y Dispositivos
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2.5">
+            Aquellos que Revolucionaron las Computadoras
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1">
+            Los visionarios que diseñaron las máquinas físicas: de las válvulas y el ENIAC a los microprocesadores, la supercomputación y la era del PC.
+          </p>
+        </div>
+
+        <!-- Search Bar Hardware -->
+        <div class="relative w-full md:w-80">
+          <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            id="hardware-search-input" 
+            placeholder="Buscar por máquina, chip, creador..." 
+            class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl pl-10 pr-9 py-2.5 text-xs sm:text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-all"
+          />
+          <button id="clear-hardware-search-btn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white" title="Limpiar búsqueda">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Categories Pills Hardware -->
+      <div id="hardware-category-filters" class="flex flex-wrap items-center justify-between gap-3 mb-8">
+        <div class="flex flex-wrap gap-2">
+          <button data-category="all" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-amber-600 text-white shadow-lg shadow-amber-600/30 transition-all border border-amber-500">
+            Todas las Máquinas
+          </button>
+          <button data-category="mecanica-valvulas" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800 transition-all">
+            Mecánica & Válvulas
+          </button>
+          <button data-category="microchips" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800 transition-all">
+            Microchips & Silicio
+          </button>
+          <button data-category="pc-revolution" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800 transition-all">
+            La Revolución del PC & GUI
+          </button>
+          <button data-category="supercomputacion" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800 transition-all">
+            Supercomputación
+          </button>
+        </div>
+
+        <span class="text-xs text-slate-400 font-mono">
+          Mostrando <span id="hardware-results-count" class="text-amber-400 font-bold">10 de 10</span> creadores
+        </span>
+      </div>
+
+      <!-- Hardware Pioneers Cards Grid -->
+      <div id="hardware-cards-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- SECTION 3: Evolution of Components (RAM, Motherboard, GPU) -->
+    <section id="componentes-seccion" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full border-t border-slate-800/80">
+      
+      <!-- Section Header -->
+      <div class="border-b border-slate-800 pb-6 mb-8 text-center max-w-3xl mx-auto">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono font-medium mb-3">
+          <i data-lucide="layers" class="w-3.5 h-3.5"></i> Sección III: Arquitectura y Componentes Clave
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-white">
+          Evolución de los Componentes Fundamentales
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
+          Descubre la historia, saltos generacionales y revoluciones técnicas de los tres pilares de cada computador: la <strong class="text-emerald-400 font-semibold">Memoria RAM</strong>, la <strong class="text-blue-400 font-semibold">Placa Madre (Motherboard)</strong> y la <strong class="text-purple-400 font-semibold">Tarjeta Gráfica (GPU)</strong>.
+        </p>
+      </div>
+
+      <!-- Component Switcher Tabs -->
+      <div class="flex flex-wrap items-center justify-center gap-3 mb-10" id="component-tabs">
+        <button data-tab="ram" class="component-tab-btn px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold flex items-center gap-2.5 transition-all border border-emerald-500/40 bg-emerald-950/40 text-emerald-300 shadow-lg shadow-emerald-950/40">
+          <i data-lucide="memory-stick" class="w-4 h-4 text-emerald-400"></i>
+          <span>Memoria RAM</span>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-emerald-500/20 border border-emerald-500/30">7 Eras</span>
+        </button>
+        <button data-tab="motherboard" class="component-tab-btn px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold flex items-center gap-2.5 transition-all border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800">
+          <i data-lucide="circuit-board" class="w-4 h-4 text-blue-400"></i>
+          <span>Placa Madre (Motherboard)</span>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 border border-slate-700">6 Eras</span>
+        </button>
+        <button data-tab="gpu" class="component-tab-btn px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold flex items-center gap-2.5 transition-all border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-white hover:bg-slate-800">
+          <i data-lucide="monitor-play" class="w-4 h-4 text-purple-400"></i>
+          <span>Tarjeta Gráfica (GPU)</span>
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800 border border-slate-700">6 Eras</span>
+        </button>
+      </div>
+
+      <!-- Dynamic Component Content Area -->
+      <div id="component-content" class="transition-all duration-300">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- Timeline Milestones Section (Integrated Hardware & Software) -->
+    <section id="timeline-section" class="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto w-full border-t border-slate-800/80">
+      <div class="text-center mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800 text-slate-300 text-xs font-mono mb-3">
+          <i data-lucide="git-commit" class="w-3.5 h-3.5 text-indigo-400"></i> Hitos Históricos
+        </div>
+        <h2 class="text-3xl font-extrabold text-white">Cronología de la Revolución Informática</h2>
+        <p class="text-slate-400 text-sm mt-2">La secuencia de descubrimientos de hardware y software que transformaron la historia de la humanidad.</p>
+      </div>
+
+      <div class="relative border-l-2 border-indigo-500/30 ml-4 sm:ml-32 space-y-10 py-4">
+        <!-- Item 1837 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-amber-400">1837</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-amber-500/40 transition-colors">
+            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 inline-block mb-1">Hardware Mecánico</span>
+            <h3 class="font-bold text-white text-base">Charles Babbage diseña la Máquina Analítica</h3>
+            <p class="text-xs text-slate-300 mt-1">Concibe la primera computadora con unidad de procesamiento ('mill') y memoria ('store'), adelantándose un siglo a la electrónica.</p>
+          </div>
+        </div>
+
+        <!-- Item 1843 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-pink-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-pink-400">1843</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-pink-500/40 transition-colors flex items-start gap-4">
+            <img src="assets/ada-lovelace.png" alt="Ada Lovelace" class="w-12 h-12 rounded-lg object-cover object-top border border-pink-500/40 shrink-0 shadow-md" />
+            <div>
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-pink-500/20 text-pink-300 border border-pink-500/30 inline-block mb-1">Primer Software</span>
+              <h3 class="font-bold text-white text-base">Ada Lovelace escribe el primer algoritmo</h3>
+              <p class="text-xs text-slate-300 mt-1">Escribe la Nota G para calcular los números de Bernoulli en la Máquina Analítica, creando el concepto del software.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 1936 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-blue-400">1936</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-blue-500/40 transition-colors flex items-start gap-4">
+            <img src="assets/alan-turing.png" alt="Alan Turing" class="w-12 h-12 rounded-lg object-cover object-top border border-blue-500/40 shrink-0 shadow-md" />
+            <div>
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-500/30 inline-block mb-1">Teoría Computacional</span>
+              <h3 class="font-bold text-white text-base">Alan Turing formaliza la computación universal</h3>
+              <p class="text-xs text-slate-300 mt-1">Publica la Máquina de Turing Universal, demostrando los límites matemáticos de lo que una computadora puede resolver.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 1941 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-orange-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-orange-400">1941</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-orange-500/40 transition-colors">
+            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-orange-500/20 text-orange-300 border border-orange-500/30 inline-block mb-1">Hardware Electromecánico</span>
+            <h3 class="font-bold text-white text-base">Konrad Zuse construye la Z3</h3>
+            <p class="text-xs text-slate-300 mt-1">La primera computadora binaria, electromecánica y programable operativa del mundo con cálculo en punto flotante.</p>
+          </div>
+        </div>
+
+        <!-- Item 1945 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-red-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-red-400">1945</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-red-500/40 transition-colors">
+            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-red-500/20 text-red-300 border border-red-500/30 inline-block mb-1">Hardware Electrónico</span>
+            <h3 class="font-bold text-white text-base">Eckert y Mauchly encienden el ENIAC</h3>
+            <p class="text-xs text-slate-300 mt-1">Primera computadora digital electrónica de propósito general: 18.000 válvulas de vacío calculando a velocidades inauditas.</p>
+          </div>
+        </div>
+
+        <!-- Item 1952 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-emerald-400">1952</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-emerald-500/40 transition-colors flex items-start gap-4">
+            <img src="assets/grace-hopper.jpg" alt="Grace Hopper" class="w-12 h-12 rounded-lg object-cover object-top border border-emerald-500/40 shrink-0 shadow-md" />
+            <div>
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 inline-block mb-1">Compiladores</span>
+              <h3 class="font-bold text-white text-base">Grace Hopper inventa el primer compilador</h3>
+              <p class="text-xs text-slate-300 mt-1">Desarrolla el A-0 System y pavimenta el camino para escribir código en palabras humanas en lugar de ceros y unos.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 1968 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-violet-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-violet-400">1968</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-violet-500/40 transition-colors">
+            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-violet-500/20 text-violet-300 border border-violet-500/30 inline-block mb-1">Interacción Humano-Máquina</span>
+            <h3 class="font-bold text-white text-base">Douglas Engelbart: "La Madre de Todas las Demos"</h3>
+            <p class="text-xs text-slate-300 mt-1">Presenta en público el primer ratón (mouse), hipertexto dinámico, ventanas en pantalla y trabajo interactivo en tiempo real.</p>
+          </div>
+        </div>
+
+        <!-- Item 1969 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-purple-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-purple-400">1969</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-purple-500/40 transition-colors flex items-start gap-4">
+            <img src="assets/margaret-hamilton.jpg" alt="Margaret Hamilton" class="w-12 h-12 rounded-lg object-cover object-top border border-purple-500/40 shrink-0 shadow-md" />
+            <div>
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30 inline-block mb-1">Ingeniería de Software</span>
+              <h3 class="font-bold text-white text-base">Margaret Hamilton y el Alunizaje del Apolo 11</h3>
+              <p class="text-xs text-slate-300 mt-1">Su arquitectura de software asíncrona salva la misión espacial y consagra formalmente la disciplina de la Ingeniería de Software.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 1971 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-teal-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-teal-400">1971</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-teal-500/40 transition-colors">
+            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 border border-teal-500/30 inline-block mb-1">Microchips</span>
+            <h3 class="font-bold text-white text-base">Federico Faggin e Intel lanzan el microprocesador 4004</h3>
+            <p class="text-xs text-slate-300 mt-1">Toda una CPU completa integrada por primera vez en un solo chip de silicio, desatando la miniaturización informática.</p>
+          </div>
+        </div>
+
+        <!-- Item 1972 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-amber-400">1972</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-amber-500/40 transition-colors flex items-start gap-4">
+            <img src="assets/dennis-ritchie.jpg" alt="Dennis Ritchie" class="w-12 h-12 rounded-lg object-cover object-top border border-amber-500/40 shrink-0 shadow-md" />
+            <div>
+              <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 inline-block mb-1">Lenguajes & Sistemas</span>
+              <h3 class="font-bold text-white text-base">Dennis Ritchie crea el Lenguaje C</h3>
+              <p class="text-xs text-slate-300 mt-1">Junto con Unix en Bell Labs, establece los cimientos sobre los que se construyen los sistemas operativos y software modernos.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 1976 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-cyan-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-cyan-400">1976</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-cyan-500/40 transition-colors">
+            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 inline-block mb-1">Supercomputación</span>
+            <h3 class="font-bold text-white text-base">Seymour Cray lanza la Supercomputadora Cray-1</h3>
+            <p class="text-xs text-slate-300 mt-1">Revoluciona el cálculo científico a gran escala con arquitectura vectorial y refrigeración avanzada con freón.</p>
+          </div>
+        </div>
+
+        <!-- Item 1977 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-rose-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-rose-400">1977</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-rose-500/40 transition-colors">
+            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-rose-500/20 text-rose-300 border border-rose-500/30 inline-block mb-1">Computación Personal</span>
+            <h3 class="font-bold text-white text-base">Steve Wozniak y Steve Jobs lanzan el Apple II</h3>
+            <p class="text-xs text-slate-300 mt-1">El primer microordenador personal listo para usar de gran éxito masivo, con carcasa plástica, teclado y gráficos a color.</p>
+          </div>
+        </div>
+
+        <!-- Item 1982 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-teal-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-teal-400">1982</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-teal-500/40 transition-colors">
+            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-teal-500/20 text-teal-300 border border-teal-500/30 inline-block mb-1">Microordenadores Domésticos</span>
+            <h3 class="font-bold text-white text-base">Clive Sinclair democratiza la informática con el ZX Spectrum</h3>
+            <p class="text-xs text-slate-300 mt-1">Lleva ordenadores asequibles al alcance de millones de hogares y forja a toda una generación europea de desarrolladores.</p>
+          </div>
+        </div>
+
+        <!-- Item 1984 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-indigo-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-indigo-400">1984</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-indigo-500/40 transition-colors">
+            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 inline-block mb-1">GUI Masiva</span>
+            <h3 class="font-bold text-white text-base">Apple presenta el Macintosh</h3>
+            <p class="text-xs text-slate-300 mt-1">Populariza definitivamente la interfaz gráfica con iconos, ventanas y ratón, redefiniendo cómo los humanos interactúan con el PC.</p>
+          </div>
+        </div>
+
+        <!-- Item 1989 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-sky-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-sky-400">1989</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-sky-500/40 transition-colors">
+            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30 inline-block mb-1">Internet & Redes</span>
+            <h3 class="font-bold text-white text-base">Tim Berners-Lee inventa la World Wide Web</h3>
+            <p class="text-xs text-slate-300 mt-1">Crea HTML, HTTP y URLs en el CERN, abriendo la red informática a toda la humanidad sin patentes.</p>
+          </div>
+        </div>
+
+        <!-- Item 1991 -->
+        <div class="relative pl-8 group">
+          <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-yellow-500 border-4 border-[#0b0f19] group-hover:scale-125 transition-transform"></div>
+          <span class="sm:absolute sm:-left-28 sm:top-1 font-mono text-xs font-bold text-yellow-400">1991</span>
+          <div class="glass-panel p-4 rounded-xl border border-slate-800 hover:border-yellow-500/40 transition-colors">
+            <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-300 border border-yellow-500/30 inline-block mb-1">Código Abierto</span>
+            <h3 class="font-bold text-white text-base">Linus Torvalds lanza Linux</h3>
+            <p class="text-xs text-slate-300 mt-1">Nace el kernel libre que hoy motoriza servidores, nubes, supercomputadoras y miles de millones de dispositivos móviles.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer & Contact Section -->
+    <footer class="glass-panel border-t border-slate-800/80 py-12 px-4 sm:px-6 lg:px-8 mt-16">
+      <div class="max-w-7xl mx-auto">
+        <!-- Contact Card -->
+        <div class="mb-10 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 border border-indigo-500/30 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="text-center md:text-left">
+            <span class="text-xs font-mono uppercase tracking-wider text-indigo-400 font-semibold px-2.5 py-1 rounded-md bg-indigo-500/10 border border-indigo-500/20">
+              Información de Contacto
+            </span>
+            <h3 class="text-xl sm:text-2xl font-bold text-white mt-2">
+              Contacto y Consultas
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-400 mt-1">
+              Para dudas, sugerencias o colaboraciones sobre la página, puedes comunicarte directamente a:
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+            <!-- Email -->
+            <a href="mailto:carlosignacio.vargas1@alumnos.ulagos.cl" class="w-full sm:w-auto px-4 py-3 rounded-xl bg-slate-800/90 hover:bg-indigo-600 text-slate-200 hover:text-white border border-slate-700/80 hover:border-indigo-500 transition-all flex items-center justify-center gap-2.5 text-xs sm:text-sm font-medium shadow-md group">
+              <i data-lucide="mail" class="w-4 h-4 text-indigo-400 group-hover:text-white transition-colors"></i>
+              <span>carlosignacio.vargas1@alumnos.ulagos.cl</span>
+            </a>
+
+            <!-- Phone / WhatsApp -->
+            <a href="tel:+56946123563" class="w-full sm:w-auto px-4 py-3 rounded-xl bg-emerald-950/60 hover:bg-emerald-600 text-emerald-300 hover:text-white border border-emerald-500/40 hover:border-emerald-400 transition-all flex items-center justify-center gap-2.5 text-xs sm:text-sm font-medium shadow-md group">
+              <i data-lucide="phone" class="w-4 h-4 text-emerald-400 group-hover:text-white transition-colors"></i>
+              <span class="font-mono font-semibold">+56946123563</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Bottom Copyright -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 border-t border-slate-800/60 pt-6">
+          <div class="flex items-center gap-2">
+            <i data-lucide="terminal" class="w-4 h-4 text-indigo-400"></i>
+            <span>"Si he visto más lejos, es porque estoy sentado sobre los hombros de gigantes."</span>
+          </div>
+          <div>
+            Construido con <span class="text-indigo-400 font-semibold">HTML, Tailwind CSS & JavaScript</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Detail Modal Dialog -->
+  <div id="modal-overlay" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+    <div id="modal-content" class="glass-panel bg-slate-900/95 border border-slate-700/80 rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl max-h-[90vh] overflow-y-auto my-8">
+      <!-- Close Button -->
+      <button id="modal-close-btn" class="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-xl bg-slate-800/80 hover:bg-slate-700 transition-colors z-20" aria-label="Cerrar modal">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Dynamic Data Container -->
+      <div id="modal-data">
+        <!-- Injected by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Initialize icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
